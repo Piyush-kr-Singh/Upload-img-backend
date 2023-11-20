@@ -29,11 +29,6 @@ app.get('/',(req,res)=>
 });
 
 
-app.get('/register',(req,res)=>
-{
-    res.send("How to upload image in project of MERN Stack with register api...!!");
-});
-
 app.listen(port,()=>{
     console.log(`server start at port no ${port}`)
 });
