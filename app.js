@@ -8,9 +8,6 @@ const router = require("./routes/router");
 const port = 4004;
 
 
-app.use(express.json());
-// app.use(cors()); 
-app.use(router);
 
 
 const corsOptions = {
@@ -20,6 +17,11 @@ const corsOptions = {
   
   // Apply CORS middleware
   app.use(cors(corsOptions));
+  
+
+app.use(express.json());
+// app.use(cors()); 
+app.use(router);
 
 
 app.get('/',(req,res)=>
