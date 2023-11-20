@@ -9,7 +9,6 @@ const port = 4004;
 
 
 
-
 const corsOptions = {
     origin: '*',
     methods: 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
@@ -27,9 +26,14 @@ app.use(router);
 app.get('/',(req,res)=>
 {
     res.send("How to upload image in project of MERN Stack...!!");
-})
+});
+
+
+app.get('/register',(req,res)=>
+{
+    res.send("How to upload image in project of MERN Stack with register api...!!");
+});
 
 app.listen(port,()=>{
     console.log(`server start at port no ${port}`)
 });
-

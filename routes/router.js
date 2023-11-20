@@ -31,26 +31,29 @@ const upload = multer({
 
 
 // user register
-router.post("/register",upload.single("photo"),async(req,res)=>{
-
-    const upload = await cloudinary.uploader.upload(req.file.path);
-    
-    const {name} = req.body;
-    
+router.post("/register", (req, res, next) => {
+    upload.single("photo")(req, res, (err) => {
+        if (err) {
+            return res.status(400).json({ message: err.message });
+        }
+        next();
+    });
+}, async (req, res) => {
     try {
+        const uploadResult = await cloudinary.uploader.upload(req.file.path);
+        const { name } = req.body;
+
         const date = moment(new Date()).format("YYYY-MM-DD");
-        
         const userdata = new users({
-            name:name,
-            imgpath:upload.secure_url,
-            date:date
+            name: name,
+            imgpath: uploadResult.secure_url,
+            date: date,
         });
-        console.log(userdata)
 
         await userdata.save();
         res.status(200).json(userdata);
     } catch (error) {
-        res.status(400).json(error)
+        res.status(500).json({ message: "Internal server error", error });
     }
 });
 
@@ -66,7 +69,9 @@ router.get("/getdata",async(req,res)=>{
         res.status(400).json(error)
         
     }
-});
+})
+
+
 
 
 //Delete user data
@@ -89,5 +94,4 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 module.exports = router;
-
 
