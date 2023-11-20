@@ -7,14 +7,15 @@
     "moment": "^2.29.4",
     "mongoose": "^8.0.1",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "vercel": "^32.5.5"
   },
   "name": "backend",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start":"node app.js",
-    "dev" : "nodemon app.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
