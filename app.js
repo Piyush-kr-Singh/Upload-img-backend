@@ -15,7 +15,7 @@ app.use(router);
 
 app.get('/',(req,res)=>
 {
-    res.send("Hello World in NodeJs");
+    res.send("How to upload image in project of MERN Stack...!!");
 })
 
 app.listen(port,()=>{
