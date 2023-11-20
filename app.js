@@ -13,6 +13,11 @@ app.use(cors());
 app.use(router);
 
 
+app.get('/',(req,res)=>
+{
+    res.send("Hello World in NodeJs");
+})
+
 app.listen(port,()=>{
     console.log(`server start at port no ${port}`)
 });
